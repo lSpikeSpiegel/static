@@ -1,21 +1,23 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from "./components/HelloWorld.vue";
+import { computed, onMounted, onUnmounted } from 'vue'
+import { zhCN, dateZhCN, darkTheme, useLoadingBar } from 'naive-ui'
+import { useMainStore } from './store/index'
+
+const mainStore = useMainStore()
+const getDarkTheme = computed(() => (mainStore.isDark ? darkTheme : undefined))
+const isLock = computed(() => mainStore.isLock)
+
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <NConfigProvider
+    v-if="!isLock"
+    :locale="zhCN"
+    :theme="getDarkTheme"
+    :date-locale="dateZhCN"
+  >
+    <router-view />
+  </NConfigProvider>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
