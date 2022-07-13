@@ -35,3 +35,5 @@
 6. 处理 静态文件资源
    - file-loader
    - url-loader
+
+### 3.使用配置好的 webpack 实现一个组件化、数据双向绑定的计算机
