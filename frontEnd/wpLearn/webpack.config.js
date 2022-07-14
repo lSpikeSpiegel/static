@@ -26,7 +26,7 @@ module.exports = {
             { // 处理scss
                 test: /\.scss$/, // .scss结尾的所有文件
                 use: [
-                    'style-loader', 'css-loader', 'scss-loader'
+                    'style-loader', 'css-loader', 'sass-loader'
                 ]
             },
             { // 处理模板文件
